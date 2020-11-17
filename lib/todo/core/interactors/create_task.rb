@@ -1,19 +1,25 @@
 # frozen_string_literal: true
 
-require 'ostruct'
-
 module Todo
   module Core
     module Interactors
       class CreateTask
         def call(name:)
-          Result.new({ name: name, created_at: Time.now })
+          if name.nil?
+            Result.new({ name: name, created_at: Time.now }, 'Invalid name')
+          else
+            Result.new({ name: name, created_at: Time.now })
+          end
         end
       end
 
-      Result = Struct.new(:payload) do
+      Result = Struct.new(:payload, :error_message) do
         def success?
-          true
+          error_message.nil? ? true : false
+        end
+
+        def failure?
+          !success?
         end
       end
     end
