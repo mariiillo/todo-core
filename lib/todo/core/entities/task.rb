@@ -4,10 +4,11 @@ module Todo
   module Core
     module Entities
       class Task
-        attr_reader :name
+        attr_reader :name, :created_at
 
         def initialize(name:)
           @name = name
+          @created_at = Time.now
         end
 
         def completed?
