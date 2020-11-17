@@ -25,5 +25,12 @@ RSpec.describe Todo::Core::Interactors::CreateTask do
 
       expect(output).to be_failure
     end
+
+    it 'returns an error message' do
+      interactor = described_class.new
+      output = interactor.call(name: nil)
+
+      expect(output.error_message).to be_an_instance_of(String)
+    end
   end
 end

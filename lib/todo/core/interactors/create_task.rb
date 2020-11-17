@@ -6,7 +6,7 @@ module Todo
       class CreateTask
         def call(name:)
           if name.nil?
-            Result.new({ name: name, created_at: Time.now }, 'Invalid name')
+            Result.new(nil, 'Invalid name')
           else
             Result.new({ name: name, created_at: Time.now })
           end
