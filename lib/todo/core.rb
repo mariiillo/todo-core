@@ -2,6 +2,7 @@
 
 require 'todo/core/version'
 require 'todo/core/entities/task'
+require 'todo/core/interactors/create_task'
 
 module Todo
   module Core
