@@ -30,7 +30,7 @@ RSpec.describe Todo::Core::Interactors::CreateTask do
       interactor = described_class.new
       output = interactor.call(name: nil)
 
-      expect(output.error_message).to be_an_instance_of(String)
+      expect(output.payload[:error_message]).to eq 'Invalid name'
     end
   end
 end

@@ -6,16 +6,16 @@ module Todo
       class CreateTask
         def call(name:)
           if name.nil?
-            Result.new(nil, 'Invalid name')
+            Result.new({ error_message: 'Invalid name' })
           else
             Result.new({ name: name, created_at: Time.now })
           end
         end
       end
 
-      Result = Struct.new(:payload, :error_message) do
+      Result = Struct.new(:payload) do
         def success?
-          error_message.nil? ? true : false
+          payload[:error_message].nil? ? true : false
         end
 
         def failure?
