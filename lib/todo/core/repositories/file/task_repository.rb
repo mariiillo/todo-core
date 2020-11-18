@@ -3,7 +3,9 @@
 module Todo
   module Core
     module Repositories
-      class TaskRepository
+      module File
+        class TaskRepository
+        end
       end
     end
   end
